@@ -25,7 +25,7 @@ This package is not published to npm. Each `v*` tag builds a GitHub release with
 the packed tarball attached; install it from there:
 
 ```sh
-bun add https://github.com/monobilisim/typescript-agi/releases/download/v0.0.8/monobilisim-typescript-agi-0.0.8.tgz
+bun add https://github.com/monobilisim/typescript-agi/releases/download/v1.0.0/monobilisim-typescript-agi-1.0.0.tgz
 ```
 
 ## Quick Start
@@ -228,8 +228,8 @@ Asterisk does.
 2. Tag the commit with the same version and push the tag:
 
    ```sh
-   git tag v0.0.9
-   git push origin v0.0.9
+   git tag v1.0.1
+   git push origin v1.0.1
    ```
 
 The `Release` workflow checks that the tag matches `package.json`, builds the
