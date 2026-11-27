@@ -1,14 +1,12 @@
-# typescript-agi-ipcom
+# typescript-agi
 
-![Version](https://img.shields.io/badge/version-0.0.8-blue.svg?cacheSeconds=2592000)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ipcomtelecom/typescript-agi-ipcom/blob/master/LICENSE)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ipcomtelecom/typescript-agi-ipcom/graphs/commit-activity)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[![NPM](https://nodei.co/npm/typescript-agi-ipcom.png?downloads=true&stars=true)](https://nodei.co/npm/typescript-agi-ipcom/)
+> TypeScript library for Asterisk AGI (Asterisk Gateway Interface) with production-ready improvements
 
-> Enhanced TypeScript library for Asterisk AGI (Asterisk Gateway Interface) with production-ready improvements
-
-This is a fork of [typescript-agi](https://github.com/brandonlehmann/typescript-agi) with significant reliability and functionality enhancements for production environments.
+Mono Bilişim's fork of [typescript-agi-ipcom](https://github.com/ipcomtelecom/typescript-agi-ipcom),
+which itself extends Brandon Lehmann's [typescript-agi](https://github.com/brandonlehmann/typescript-agi)
+with reliability and functionality enhancements for production environments.
 
 ## Features
 
@@ -23,8 +21,11 @@ This is a fork of [typescript-agi](https://github.com/brandonlehmann/typescript-
 
 ## Installation
 
+This package is not published to npm. Each `v*` tag builds a GitHub release with
+the packed tarball attached; install it from there:
+
 ```sh
-npm install typescript-agi-ipcom
+bun add https://github.com/monobilisim/typescript-agi/releases/download/v0.0.8/monobilisim-typescript-agi-0.0.8.tgz
 ```
 
 ## Quick Start
@@ -32,18 +33,18 @@ npm install typescript-agi-ipcom
 ### Basic Usage
 
 ```typescript
-import { AGIServer, Channel } from 'typescript-agi-ipcom';
+import { AGIServer, Channel } from '@monobilisim/typescript-agi';
 
 const agiServer = new AGIServer(3000, '0.0.0.0');
 
 agiServer.on('channel', async (channel: Channel) => {
-    try {
-        await channel.answer();
-        await channel.sayNumber(12345);
-        await channel.hangup();
-    } catch (error) {
-        console.error('Error handling channel:', error);
-    }
+  try {
+    await channel.answer();
+    await channel.sayNumber(12345);
+    await channel.hangup();
+  } catch (error) {
+    console.error('Error handling channel:', error);
+  }
 });
 
 agiServer.start();
@@ -57,22 +58,22 @@ Collect multi-digit input with configurable inter-digit timeout:
 
 ```typescript
 agiServer.on('channel', async (channel: Channel) => {
-    await channel.answer();
+  await channel.answer();
 
-    // Collect up to 4 digits with 3-second timeout between digits
-    // Total timeout: 10 seconds after audio finishes
-    const result = await channel.getData(
-        'enter-account-number',  // audio file
-        10000,                   // total timeout (10s)
-        4,                       // max digits
-        3000                     // inter-digit timeout (3s)
-    );
+  // Collect up to 4 digits with 3-second timeout between digits
+  // Total timeout: 10 seconds after audio finishes
+  const result = await channel.getData(
+    'enter-account-number', // audio file
+    10000, // total timeout (10s)
+    4, // max digits
+    3000 // inter-digit timeout (3s)
+  );
 
-    if (result.timeout) {
-        await channel.streamFile('timeout');
-    } else {
-        await channel.verbose(`Collected: ${result.digits}`);
-    }
+  if (result.timeout) {
+    await channel.streamFile('timeout');
+  } else {
+    await channel.verbose(`Collected: ${result.digits}`);
+  }
 });
 ```
 
@@ -83,9 +84,9 @@ Override default timeouts for long-running operations:
 ```typescript
 // Execute Dial with custom 2-hour timeout
 await channel.exec(
-    'Dial',
-    'PJSIP/user@trunk,3600,tT',
-    7200000  // 2 hours in milliseconds
+  'Dial',
+  'PJSIP/user@trunk,3600,tT',
+  7200000 // 2 hours in milliseconds
 );
 
 // Use Infinity for no timeout (relies on channelAlive flag)
@@ -98,15 +99,15 @@ Monitor command queue health in real-time:
 
 ```typescript
 channel.on('commandQueued', ({ command, queueSize }) => {
-    console.log(`Queued: ${command}, Queue size: ${queueSize}`);
+  console.log(`Queued: ${command}, Queue size: ${queueSize}`);
 });
 
 channel.on('commandProcessed', ({ command, duration }) => {
-    console.log(`Processed: ${command} in ${duration}ms`);
+  console.log(`Processed: ${command} in ${duration}ms`);
 });
 
 channel.on('commandFailed', ({ command, error }) => {
-    console.error(`Failed: ${command}`, error);
+  console.error(`Failed: ${command}`, error);
 });
 
 // Get current queue statistics
@@ -118,12 +119,12 @@ console.log(`Queue: ${stats.size}, Processing: ${stats.isProcessing}`);
 
 Commands automatically use appropriate timeouts based on their type:
 
-| Command Type | Default Timeout | Examples |
-|-------------|-----------------|----------|
-| Fast commands | 10 seconds | ANSWER, HANGUP, GET/SET VARIABLE, DATABASE |
-| Audio commands | 60 seconds | STREAM FILE, SAY, GET DATA, GET OPTION |
-| Recording | 10 minutes | RECORD FILE |
-| Call control | 6 hours | EXEC (Dial, Queue, VoiceMail) |
+| Command Type   | Default Timeout | Examples                                   |
+| -------------- | --------------- | ------------------------------------------ |
+| Fast commands  | 10 seconds      | ANSWER, HANGUP, GET/SET VARIABLE, DATABASE |
+| Audio commands | 60 seconds      | STREAM FILE, SAY, GET DATA, GET OPTION     |
+| Recording      | 10 minutes      | RECORD FILE                                |
+| Call control   | 6 hours         | EXEC (Dial, Queue, VoiceMail)              |
 
 You can override any timeout by passing a custom value to methods that support it.
 
@@ -139,6 +140,7 @@ You can override any timeout by passing a custom value to methods that support i
 ### Channel Events
 
 Standard events:
+
 - `ready`: Channel initialized and ready for commands
 - `send`: Data sent to Asterisk
 - `recv`: Raw response received from Asterisk
@@ -149,6 +151,7 @@ Standard events:
 - `timeout`: Socket timeout
 
 Queue management events:
+
 - `commandQueued`: Command added to queue
 - `commandProcessed`: Command completed successfully
 - `commandFailed`: Command execution failed
@@ -157,7 +160,11 @@ Queue management events:
 
 ## API Documentation
 
-Full API documentation is available in the [TypeDoc documentation](https://ipcomtelecom.github.io/typescript-agi-ipcom/).
+Generate the TypeDoc HTML documentation into `docs/` with:
+
+```sh
+bun run docs
+```
 
 ### Core Classes
 
@@ -191,29 +198,54 @@ This fork includes the following enhancements:
 
 ```sh
 # Install dependencies
-npm install
+bun install
 
-# Build ESM, CommonJS, and type definitions
-npm run build
+# Build ESM, CommonJS and type definitions into dist/
+bun run build
 
-# Generate TypeDoc documentation
-npm run docs
+# Generate the TypeDoc documentation into docs/
+bun run docs
+
+# Type check, lint, format
+bun run typecheck
+bun run lint
+bun fmt
 ```
+
+## Releasing
+
+1. Bump `version` in `package.json` and commit.
+2. Tag the commit with the same version and push the tag:
+
+   ```sh
+   git tag v0.0.9
+   git push origin v0.0.9
+   ```
+
+The `Release` workflow checks that the tag matches `package.json`, builds the
+package, packs it with `bun pm pack` and attaches the tarball to a GitHub
+release.
 
 ## Contributing
 
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](https://github.com/ipcomtelecom/typescript-agi-ipcom/issues).
+Issues and feature requests are welcome on the
+[issues page](https://github.com/monobilisim/typescript-agi/issues).
 
 ## Authors
 
 **Current Maintainer:**
+
+- [Mono Bilişim](https://github.com/monobilisim)
+- GitHub: [@mudrockdev](https://github.com/mudrockdev)
+
+**Previous Maintainer:**
+
 - Fabio Theodoro <fabio@ipcom.com.br>
 - GitHub: [@ipcomtelecom](https://github.com/ipcomtelecom)
 - Company: [IPCOM](https://ipcom.com.br)
 
 **Original Author:**
+
 - Brandon Lehmann <brandonlehmann@gmail.com>
 - GitHub: [@brandonlehmann](https://github.com/brandonlehmann)
 - Original project: [typescript-agi](https://github.com/brandonlehmann/typescript-agi)
@@ -222,14 +254,10 @@ Feel free to check the [issues page](https://github.com/ipcomtelecom/typescript-
 
 Copyright 2020 Brandon Lehmann (original work)
 Copyright 2025 Fabio Theodoro / IPCOM (enhancements)
+Copyright 2026 Mono Bilişim
 
-This project is [MIT](https://github.com/ipcomtelecom/typescript-agi-ipcom/blob/master/LICENSE) licensed.
+This project is [MIT](LICENSE) licensed.
 
 ---
 
-## Support
-
-If this project helped you, please consider:
-- Starring the repository on [GitHub](https://github.com/ipcomtelecom/typescript-agi-ipcom)
-- Reporting issues or suggesting features
-- Contributing improvements via pull requests
+Forked from [ipcomtelecom/typescript-agi-ipcom](https://github.com/ipcomtelecom/typescript-agi-ipcom).

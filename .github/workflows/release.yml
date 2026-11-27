@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
+
+      - name: Check tag matches package.json version
+        run: |
+          version="$(jq -r .version package.json)"
+          if [ "${GITHUB_REF_NAME}" != "v${version}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match package.json version ${version}"
+            exit 1
+          fi
+
+      - run: bun install --frozen-lockfile
+      - run: bun fmt --check .
+      - run: bun run typecheck
+      - run: bun run build
+
+      - name: Pack
+        run: bun pm pack
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${GITHUB_REF_NAME}" ./*.tgz --title "${GITHUB_REF_NAME}" --generate-notes

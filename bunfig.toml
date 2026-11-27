@@ -1,0 +1,11 @@
+[install]
+# Only install package versions that have been public for at least 3 days.
+minimumReleaseAge = "3d" # 3 days
+minimumReleaseAgeExcludes = ["@types/bun", "bun-types"]
+
+[fmt]
+# `bun fmt` (Prettier compatible). Indentation, line width and line endings
+# come from .editorconfig; only what editorconfig cannot express lives here.
+singleQuote = true
+trailingComma = "es5"
+semi = true

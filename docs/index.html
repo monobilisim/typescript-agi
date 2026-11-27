@@ -1,228 +1,255 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>typescript-agi</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">typescript-agi</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
-			<h1>typescript-agi</h1>
-		</div>
-	</div>
-</header>
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@monobilisim/typescript-agi</title><meta name="description" content="Documentation for @monobilisim/typescript-agi"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container"><a href="index.html" class="title">@monobilisim/typescript-agi</a>
+<div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/>
+<ul role="listbox" id="tsd-search-results"></ul>
+<div id="tsd-search-status" aria-live="polite" aria-atomic="true">
+<div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header>
 <div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#welcome-to-typescript-agi-👋" id="welcome-to-typescript-agi-👋" style="color: inherit; text-decoration: none;">
-					<h1>Welcome to typescript-agi 👋</h1>
-				</a>
-				<p><img src="https://img.shields.io/badge/version-0.0.5-blue.svg?cacheSeconds=2592000" alt="Version">
-					<a href="https://brandonlehmann.github.io/typescript-agi/"><img src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" alt="Documentation"></a>
-					<a href="https://github.com/brandonlehmann/typescript-agi/graphs/commit-activity"><img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" alt="Maintenance"></a>
-				<a href="https://github.com/brandonlehmann/typescript-agi/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></p>
-				<p><a href="https://nodei.co/npm/typescript-agi/"><img src="https://nodei.co/npm/typescript-agi.png?downloads=true&stars=true" alt="NPM"></a></p>
-				<blockquote>
-					<p>NodeJS TypeScript Library for Asterisk AGI Interfaces</p>
-				</blockquote>
-				<a href="#🏠-homepage" id="🏠-homepage" style="color: inherit; text-decoration: none;">
-					<h3>🏠 <a href="https://brandonlehmann.github.io/typescript-agi/">Homepage</a></h3>
-				</a>
-				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
-					<h2>Install</h2>
-				</a>
-				<pre><code class="language-sh">npm install typescript-agi</code></pre>
-				<a href="#run-tests" id="run-tests" style="color: inherit; text-decoration: none;">
-					<h2>Run tests</h2>
-				</a>
-				<pre><code class="language-sh">npm run <span class="hljs-built_in">test</span></code></pre>
-				<a href="#example-usage" id="example-usage" style="color: inherit; text-decoration: none;">
-					<h2>Example Usage</h2>
-				</a>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {
-    AGIServer, 
-    Channel
-} <span class="hljs-keyword">from</span> <span class="hljs-string">'typescript-agi'</span>;
+<div class="col-content">
+<div class="tsd-page-title">
+<h1>@monobilisim/typescript-agi</h1></div>
+<div class="tsd-panel tsd-typography"><h1 id="typescript-agi" class="tsd-anchor-link">typescript-agi<a href="#typescript-agi" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1>
+<p><a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></p>
+<blockquote>
+<p>TypeScript library for Asterisk AGI (Asterisk Gateway Interface) with production-ready improvements</p>
+</blockquote>
+<p>Mono Bilişim's fork of <a href="https://github.com/ipcomtelecom/typescript-agi-ipcom">typescript-agi-ipcom</a>,
+which itself extends Brandon Lehmann's <a href="https://github.com/brandonlehmann/typescript-agi">typescript-agi</a>
+with reliability and functionality enhancements for production environments.</p>
+<h2 id="features" class="tsd-anchor-link">Features<a href="#features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<ul>
+<li><strong>Production-Ready FIFO Command Queue</strong>: Eliminates race conditions through sequential command processing</li>
+<li><strong>Intelligent Timeout System</strong>: Context-aware timeouts (10 seconds to 6 hours) based on command type</li>
+<li><strong>Inter-Digit Timeout Support</strong>: Enhanced <code>getData()</code> with configurable delays between digit inputs</li>
+<li><strong>Queue Management APIs</strong>: Monitor and control command queue with <code>getQueueStats()</code> and <code>clearCommandQueue()</code></li>
+<li><strong>Comprehensive Event System</strong>: New events for command lifecycle tracking</li>
+<li><strong>Backpressure Control</strong>: Configurable queue limits (default: 100 commands) prevent memory exhaustion</li>
+<li><strong>Channel Lifecycle Management</strong>: <code>channelAlive</code> flag ensures proper connection state tracking</li>
+<li><strong>TypeScript Support</strong>: Full type definitions with ESM and CommonJS outputs</li>
+</ul>
+<h2 id="installation" class="tsd-anchor-link">Installation<a href="#installation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>This package is not published to npm. Each <code>v*</code> tag builds a GitHub release with
+the packed tarball attached; install it from there:</p>
+<pre><code class="sh"><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">add</span><span class="hl-1"> </span><span class="hl-2">https://github.com/monobilisim/typescript-agi/releases/download/v0.0.8/monobilisim-typescript-agi-0.0.8.tgz</span>
+</code><button type="button">Copy</button></pre>
 
-<span class="hljs-keyword">const</span> agiServer = <span class="hljs-keyword">new</span> AGIServer();
+<h2 id="quick-start" class="tsd-anchor-link">Quick Start<a href="#quick-start" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<h3 id="basic-usage" class="tsd-anchor-link">Basic Usage<a href="#basic-usage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="typescript"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">AGIServer</span><span class="hl-1">, </span><span class="hl-4">Channel</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&#39;@monobilisim/typescript-agi&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">agiServer</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">AGIServer</span><span class="hl-1">(</span><span class="hl-7">3000</span><span class="hl-1">, </span><span class="hl-2">&#39;0.0.0.0&#39;</span><span class="hl-1">);</span><br/><br/><span class="hl-4">agiServer</span><span class="hl-1">.</span><span class="hl-0">on</span><span class="hl-1">(</span><span class="hl-2">&#39;channel&#39;</span><span class="hl-1">, </span><span class="hl-5">async</span><span class="hl-1"> (</span><span class="hl-4">channel</span><span class="hl-1">: </span><span class="hl-8">Channel</span><span class="hl-1">) </span><span class="hl-5">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-3">try</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">answer</span><span class="hl-1">();</span><br/><span class="hl-1">    </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">sayNumber</span><span class="hl-1">(</span><span class="hl-7">12345</span><span class="hl-1">);</span><br/><span class="hl-1">    </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">hangup</span><span class="hl-1">();</span><br/><span class="hl-1">  } </span><span class="hl-3">catch</span><span class="hl-1"> (</span><span class="hl-4">error</span><span class="hl-1">) {</span><br/><span class="hl-1">    </span><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-0">error</span><span class="hl-1">(</span><span class="hl-2">&#39;Error handling channel:&#39;</span><span class="hl-1">, </span><span class="hl-4">error</span><span class="hl-1">);</span><br/><span class="hl-1">  }</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-4">agiServer</span><span class="hl-1">.</span><span class="hl-0">start</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
 
-agiServer.on(<span class="hljs-string">'channel'</span>, <span class="hljs-keyword">async</span>(channel: Channel) =&gt; {
-    <span class="hljs-keyword">await</span> channel.answer();
-    <span class="hljs-keyword">await</span> channel.sayNumber(<span class="hljs-number">12345</span>);
-    <span class="hljs-keyword">await</span> channel.hangup();
-});
+<h2 id="advanced-features" class="tsd-anchor-link">Advanced Features<a href="#advanced-features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<h3 id="inter-digit-timeout-for-dtmf-collection" class="tsd-anchor-link">Inter-Digit Timeout for DTMF Collection<a href="#inter-digit-timeout-for-dtmf-collection" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Collect multi-digit input with configurable inter-digit timeout:</p>
+<pre><code class="typescript"><span class="hl-4">agiServer</span><span class="hl-1">.</span><span class="hl-0">on</span><span class="hl-1">(</span><span class="hl-2">&#39;channel&#39;</span><span class="hl-1">, </span><span class="hl-5">async</span><span class="hl-1"> (</span><span class="hl-4">channel</span><span class="hl-1">: </span><span class="hl-8">Channel</span><span class="hl-1">) </span><span class="hl-5">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">answer</span><span class="hl-1">();</span><br/><br/><span class="hl-1">  </span><span class="hl-9">// Collect up to 4 digits with 3-second timeout between digits</span><br/><span class="hl-1">  </span><span class="hl-9">// Total timeout: 10 seconds after audio finishes</span><br/><span class="hl-1">  </span><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">result</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">getData</span><span class="hl-1">(</span><br/><span class="hl-1">    </span><span class="hl-2">&#39;enter-account-number&#39;</span><span class="hl-1">, </span><span class="hl-9">// audio file</span><br/><span class="hl-1">    </span><span class="hl-7">10000</span><span class="hl-1">, </span><span class="hl-9">// total timeout (10s)</span><br/><span class="hl-1">    </span><span class="hl-7">4</span><span class="hl-1">, </span><span class="hl-9">// max digits</span><br/><span class="hl-1">    </span><span class="hl-7">3000</span><span class="hl-1"> </span><span class="hl-9">// inter-digit timeout (3s)</span><br/><span class="hl-1">  );</span><br/><br/><span class="hl-1">  </span><span class="hl-3">if</span><span class="hl-1"> (</span><span class="hl-4">result</span><span class="hl-1">.</span><span class="hl-4">timeout</span><span class="hl-1">) {</span><br/><span class="hl-1">    </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">streamFile</span><span class="hl-1">(</span><span class="hl-2">&#39;timeout&#39;</span><span class="hl-1">);</span><br/><span class="hl-1">  } </span><span class="hl-3">else</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">verbose</span><span class="hl-1">(</span><span class="hl-2">`Collected: </span><span class="hl-5">${</span><span class="hl-4">result</span><span class="hl-10">.</span><span class="hl-4">digits</span><span class="hl-5">}</span><span class="hl-2">`</span><span class="hl-1">);</span><br/><span class="hl-1">  }</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
 
-agiServer.start();</code></pre>
-				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
-					<h2>Documentation</h2>
-				</a>
-				<p>Library documentation is available at <a href="https://brandonlehmann.github.io/typescript-agi/">https://brandonlehmann.github.io/typescript-agi/</a></p>
-				<a href="#author" id="author" style="color: inherit; text-decoration: none;">
-					<h2>Author</h2>
-				</a>
-				<p>👤 <strong>Brandon Lehmann <a href="mailto:&#98;&#114;&#97;&#110;&#x64;&#x6f;&#110;&#x6c;&#101;&#104;&#109;&#x61;&#110;&#x6e;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;">&#98;&#114;&#97;&#110;&#x64;&#x6f;&#110;&#x6c;&#101;&#104;&#109;&#x61;&#110;&#x6e;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;</a></strong></p>
-				<ul>
-					<li>Github: <a href="https://github.com/brandonlehmann">@brandonlehmann</a></li>
-				</ul>
-				<a href="#🤝-contributing" id="🤝-contributing" style="color: inherit; text-decoration: none;">
-					<h2>🤝 Contributing</h2>
-				</a>
-				<p>Contributions, issues and feature requests are welcome!</p>
-				<p>Feel free to check <a href="https://github.com/brandonlehmann/typescript-agi/issues">issues page</a>.</p>
-				<a href="#show-your-support" id="show-your-support" style="color: inherit; text-decoration: none;">
-					<h2>Show your support</h2>
-				</a>
-				<p>Give a ⭐️ if this project helped you!</p>
-				<a href="#📝-license" id="📝-license" style="color: inherit; text-decoration: none;">
-					<h2>📝 License</h2>
-				</a>
-				<p>Copyright © 2020 <a href="https://github.com/brandonlehmann">Brandon Lehmann <a href="mailto:&#98;&#114;&#97;&#x6e;&#100;&#111;&#110;&#x6c;&#x65;&#x68;&#x6d;&#97;&#x6e;&#x6e;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;">&#98;&#114;&#97;&#x6e;&#100;&#111;&#110;&#x6c;&#x65;&#x68;&#x6d;&#97;&#x6e;&#x6e;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a></a>.</p>
-				<p>This project is <a href="https://github.com/brandonlehmann/typescript-agi/blob/master/LICENSE">MIT</a> licensed.</p>
-				<hr>
-				<p><em>This README was generated with ❤️ by <a href="https://github.com/kefranabg/readme-md-generator">readme-md-generator</a></em></p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="enums/channelstate.html" class="tsd-kind-icon">Channel<wbr>State</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/dialstatus.html" class="tsd-kind-icon">Dial<wbr>Status</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/playbackstatus.html" class="tsd-kind-icon">Playback<wbr>Status</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/agiserver.html" class="tsd-kind-icon">AGIServer</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/channel.html" class="tsd-kind-icon">Channel</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
-</body>
-</html>
+<h3 id="custom-command-timeouts" class="tsd-anchor-link">Custom Command Timeouts<a href="#custom-command-timeouts" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Override default timeouts for long-running operations:</p>
+<pre><code class="typescript"><span class="hl-9">// Execute Dial with custom 2-hour timeout</span><br/><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">exec</span><span class="hl-1">(</span><br/><span class="hl-1">  </span><span class="hl-2">&#39;Dial&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-2">&#39;PJSIP/user@trunk,3600,tT&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-7">7200000</span><span class="hl-1"> </span><span class="hl-9">// 2 hours in milliseconds</span><br/><span class="hl-1">);</span><br/><br/><span class="hl-9">// Use Infinity for no timeout (relies on channelAlive flag)</span><br/><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">exec</span><span class="hl-1">(</span><span class="hl-2">&#39;Queue&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;support,,,,,&#39;</span><span class="hl-1">, </span><span class="hl-5">Infinity</span><span class="hl-1">);</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="queue-monitoring" class="tsd-anchor-link">Queue Monitoring<a href="#queue-monitoring" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Monitor command queue health in real-time:</p>
+<pre><code class="typescript"><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">on</span><span class="hl-1">(</span><span class="hl-2">&#39;commandQueued&#39;</span><span class="hl-1">, ({ </span><span class="hl-4">command</span><span class="hl-1">, </span><span class="hl-4">queueSize</span><span class="hl-1"> }) </span><span class="hl-5">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-2">`Queued: </span><span class="hl-5">${</span><span class="hl-4">command</span><span class="hl-5">}</span><span class="hl-2">, Queue size: </span><span class="hl-5">${</span><span class="hl-4">queueSize</span><span class="hl-5">}</span><span class="hl-2">`</span><span class="hl-1">);</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">on</span><span class="hl-1">(</span><span class="hl-2">&#39;commandProcessed&#39;</span><span class="hl-1">, ({ </span><span class="hl-4">command</span><span class="hl-1">, </span><span class="hl-4">duration</span><span class="hl-1"> }) </span><span class="hl-5">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-2">`Processed: </span><span class="hl-5">${</span><span class="hl-4">command</span><span class="hl-5">}</span><span class="hl-2"> in </span><span class="hl-5">${</span><span class="hl-4">duration</span><span class="hl-5">}</span><span class="hl-2">ms`</span><span class="hl-1">);</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">on</span><span class="hl-1">(</span><span class="hl-2">&#39;commandFailed&#39;</span><span class="hl-1">, ({ </span><span class="hl-4">command</span><span class="hl-1">, </span><span class="hl-4">error</span><span class="hl-1"> }) </span><span class="hl-5">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-0">error</span><span class="hl-1">(</span><span class="hl-2">`Failed: </span><span class="hl-5">${</span><span class="hl-4">command</span><span class="hl-5">}</span><span class="hl-2">`</span><span class="hl-1">, </span><span class="hl-4">error</span><span class="hl-1">);</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-9">// Get current queue statistics</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">stats</span><span class="hl-1"> = </span><span class="hl-4">channel</span><span class="hl-1">.</span><span class="hl-0">getQueueStats</span><span class="hl-1">();</span><br/><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-2">`Queue: </span><span class="hl-5">${</span><span class="hl-4">stats</span><span class="hl-10">.</span><span class="hl-4">size</span><span class="hl-5">}</span><span class="hl-2">, Processing: </span><span class="hl-5">${</span><span class="hl-4">stats</span><span class="hl-10">.</span><span class="hl-4">isProcessing</span><span class="hl-5">}</span><span class="hl-2">`</span><span class="hl-1">);</span>
+</code><button type="button">Copy</button></pre>
+
+<h2 id="intelligent-timeout-system" class="tsd-anchor-link">Intelligent Timeout System<a href="#intelligent-timeout-system" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>Commands automatically use appropriate timeouts based on their type:</p>
+<table>
+<thead>
+<tr>
+<th>Command Type</th>
+<th>Default Timeout</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fast commands</td>
+<td>10 seconds</td>
+<td>ANSWER, HANGUP, GET/SET VARIABLE, DATABASE</td>
+</tr>
+<tr>
+<td>Audio commands</td>
+<td>60 seconds</td>
+<td>STREAM FILE, SAY, GET DATA, GET OPTION</td>
+</tr>
+<tr>
+<td>Recording</td>
+<td>10 minutes</td>
+<td>RECORD FILE</td>
+</tr>
+<tr>
+<td>Call control</td>
+<td>6 hours</td>
+<td>EXEC (Dial, Queue, VoiceMail)</td>
+</tr>
+</tbody>
+</table>
+<p>You can override any timeout by passing a custom value to methods that support it.</p>
+<h2 id="event-system" class="tsd-anchor-link">Event System<a href="#event-system" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<h3 id="agiserver-events" class="tsd-anchor-link">AGIServer Events<a href="#agiserver-events" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li><code>channel</code>: New channel ready for interaction</li>
+<li><code>listening</code>: Server started successfully</li>
+<li><code>error</code>: Server error occurred</li>
+<li><code>close</code>: Server stopped</li>
+</ul>
+<h3 id="channel-events" class="tsd-anchor-link">Channel Events<a href="#channel-events" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Standard events:</p>
+<ul>
+<li><code>ready</code>: Channel initialized and ready for commands</li>
+<li><code>send</code>: Data sent to Asterisk</li>
+<li><code>recv</code>: Raw response received from Asterisk</li>
+<li><code>response</code>: Parsed response object</li>
+<li><code>hangup</code>: Call hung up</li>
+<li><code>close</code>: Socket closed</li>
+<li><code>error</code>: Socket error</li>
+<li><code>timeout</code>: Socket timeout</li>
+</ul>
+<p>Queue management events:</p>
+<ul>
+<li><code>commandQueued</code>: Command added to queue</li>
+<li><code>commandProcessed</code>: Command completed successfully</li>
+<li><code>commandFailed</code>: Command execution failed</li>
+<li><code>queueEmpty</code>: All commands processed</li>
+<li><code>queueCleared</code>: Queue manually or automatically cleared</li>
+</ul>
+<h2 id="api-documentation" class="tsd-anchor-link">API Documentation<a href="#api-documentation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>Generate the TypeDoc HTML documentation into <code>docs/</code> with:</p>
+<pre><code class="sh"><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">docs</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="core-classes" class="tsd-anchor-link">Core Classes<a href="#core-classes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li><strong>AGIServer</strong>: TCP server that listens for AGI connections from Asterisk</li>
+<li><strong>Channel</strong>: Represents an active AGI channel with full protocol support</li>
+<li><strong>ChannelState</strong>: Enum for channel states (DOWN_AVAILABLE, OFF_HOOK, UP, etc.)</li>
+<li><strong>DialStatus</strong>: Enum for Dial() results (ANSWER, BUSY, NOANSWER, etc.)</li>
+<li><strong>PlaybackStatus</strong>: Enum for playback results (SUCCESS, USER_STOPPED, etc.)</li>
+</ul>
+<h2 id="improvements-over-original" class="tsd-anchor-link">Improvements Over Original<a href="#improvements-over-original" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>This fork includes the following enhancements:</p>
+<ol>
+<li>
+<p><strong>FIFO Command Queue</strong>: Original had race condition issues with concurrent commands receiving wrong responses. Now uses sequential queue processing.</p>
+</li>
+<li>
+<p><strong>Intelligent Timeouts</strong>: Original used fixed 10-second timeout for all commands. Now uses context-aware timeouts (10s - 6 hours) based on command type.</p>
+</li>
+<li>
+<p><strong>Inter-Digit Timeout</strong>: Original <code>getData()</code> couldn't handle digit-by-digit collection with delays. New implementation supports configurable inter-digit timeouts.</p>
+</li>
+<li>
+<p><strong>Production Reliability</strong>:</p>
+<ul>
+<li>Backpressure control (queue size limits)</li>
+<li>Channel lifecycle tracking (<code>channelAlive</code> flag)</li>
+<li>Proper cleanup on hangup/close</li>
+<li>Comprehensive error handling</li>
+</ul>
+</li>
+<li>
+<p><strong>Queue Management</strong>: New APIs for monitoring and controlling the command queue (<code>getQueueStats()</code>, <code>clearCommandQueue()</code>).</p>
+</li>
+<li>
+<p><strong>Enhanced Events</strong>: Additional events for command lifecycle tracking and queue management.</p>
+</li>
+</ol>
+<h2 id="build-from-source" class="tsd-anchor-link">Build from Source<a href="#build-from-source" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<pre><code class="sh"><span class="hl-9"># Install dependencies</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">install</span><br/><br/><span class="hl-9"># Build ESM, CommonJS and type definitions into dist/</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">build</span><br/><br/><span class="hl-9"># Generate the TypeDoc documentation into docs/</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">docs</span><br/><br/><span class="hl-9"># Type check, lint, format</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">typecheck</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">lint</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">fmt</span>
+</code><button type="button">Copy</button></pre>
+
+<h2 id="releasing" class="tsd-anchor-link">Releasing<a href="#releasing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<ol>
+<li>
+<p>Bump <code>version</code> in <code>package.json</code> and commit.</p>
+</li>
+<li>
+<p>Tag the commit with the same version and push the tag:</p>
+<pre><code class="sh"><span class="hl-0">git</span><span class="hl-1"> </span><span class="hl-2">tag</span><span class="hl-1"> </span><span class="hl-2">v0.0.9</span><br/><span class="hl-0">git</span><span class="hl-1"> </span><span class="hl-2">push</span><span class="hl-1"> </span><span class="hl-2">origin</span><span class="hl-1"> </span><span class="hl-2">v0.0.9</span>
+</code><button type="button">Copy</button></pre>
+
+</li>
+</ol>
+<p>The <code>Release</code> workflow checks that the tag matches <code>package.json</code>, builds the
+package, packs it with <code>bun pm pack</code> and attaches the tarball to a GitHub
+release.</p>
+<h2 id="contributing" class="tsd-anchor-link">Contributing<a href="#contributing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>Issues and feature requests are welcome on the
+<a href="https://github.com/monobilisim/typescript-agi/issues">issues page</a>.</p>
+<h2 id="authors" class="tsd-anchor-link">Authors<a href="#authors" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p><strong>Current Maintainer:</strong></p>
+<ul>
+<li><a href="https://github.com/monobilisim">Mono Bilişim</a></li>
+<li>GitHub: <a href="https://github.com/mudrockdev">@mudrockdev</a></li>
+</ul>
+<p><strong>Previous Maintainer:</strong></p>
+<ul>
+<li>Fabio Theodoro <a href="mailto:fabio@ipcom.com.br">fabio@ipcom.com.br</a></li>
+<li>GitHub: <a href="https://github.com/ipcomtelecom">@ipcomtelecom</a></li>
+<li>Company: <a href="https://ipcom.com.br">IPCOM</a></li>
+</ul>
+<p><strong>Original Author:</strong></p>
+<ul>
+<li>Brandon Lehmann <a href="mailto:brandonlehmann@gmail.com">brandonlehmann@gmail.com</a></li>
+<li>GitHub: <a href="https://github.com/brandonlehmann">@brandonlehmann</a></li>
+<li>Original project: <a href="https://github.com/brandonlehmann/typescript-agi">typescript-agi</a></li>
+</ul>
+<h2 id="license" class="tsd-anchor-link">License<a href="#license" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>Copyright 2020 Brandon Lehmann (original work)
+Copyright 2025 Fabio Theodoro / IPCOM (enhancements)
+Copyright 2026 Mono Bilişim</p>
+<p>This project is <a href="media/LICENSE">MIT</a> licensed.</p>
+<hr>
+<p>Forked from <a href="https://github.com/ipcomtelecom/typescript-agi-ipcom">ipcomtelecom/typescript-agi-ipcom</a>.</p>
+</div></div>
+<div class="col-sidebar">
+<div class="page-menu">
+<div class="tsd-navigation settings">
+<details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg>
+<h3>Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div>
+<div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg>
+<h3>On This Page</h3></summary>
+<div class="tsd-accordion-details"><a href="#typescript-agi"><span>typescript-<wbr/>agi</span></a>
+<ul>
+<li><a href="#features"><span>Features</span></a></li>
+<li><a href="#installation"><span>Installation</span></a></li>
+<li><a href="#quick-start"><span>Quick <wbr/>Start</span></a></li>
+<li>
+<ul>
+<li><a href="#basic-usage"><span>Basic <wbr/>Usage</span></a></li></ul></li>
+<li><a href="#advanced-features"><span>Advanced <wbr/>Features</span></a></li>
+<li>
+<ul>
+<li><a href="#inter-digit-timeout-for-dtmf-collection"><span>Inter-<wbr/>Digit <wbr/>Timeout for <wbr/>DTMF <wbr/>Collection</span></a></li>
+<li><a href="#custom-command-timeouts"><span>Custom <wbr/>Command <wbr/>Timeouts</span></a></li>
+<li><a href="#queue-monitoring"><span>Queue <wbr/>Monitoring</span></a></li></ul></li>
+<li><a href="#intelligent-timeout-system"><span>Intelligent <wbr/>Timeout <wbr/>System</span></a></li>
+<li><a href="#event-system"><span>Event <wbr/>System</span></a></li>
+<li>
+<ul>
+<li><a href="#agiserver-events"><span>AGI<wbr/>Server <wbr/>Events</span></a></li>
+<li><a href="#channel-events"><span>Channel <wbr/>Events</span></a></li></ul></li>
+<li><a href="#api-documentation"><span>API <wbr/>Documentation</span></a></li>
+<li>
+<ul>
+<li><a href="#core-classes"><span>Core <wbr/>Classes</span></a></li></ul></li>
+<li><a href="#improvements-over-original"><span>Improvements <wbr/>Over <wbr/>Original</span></a></li>
+<li><a href="#build-from-source"><span>Build from <wbr/>Source</span></a></li>
+<li><a href="#releasing"><span>Releasing</span></a></li>
+<li><a href="#contributing"><span>Contributing</span></a></li>
+<li><a href="#authors"><span>Authors</span></a></li>
+<li><a href="#license"><span>License</span></a></li></ul></div></details></div>
+<div class="site-menu">
+<nav class="tsd-navigation"><a href="modules.html">@monobilisim/typescript-agi</a>
+<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
+<li>Loading...</li></ul></nav></div></div></div><footer>
+<p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer>
+<div class="overlay"></div></body></html>

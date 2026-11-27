@@ -2,5 +2,5 @@
 //
 // Please see the included LICENSE file for more information.
 
-export {AGIServer} from './AGIServer';
-export {Channel, ChannelState, DialStatus, PlaybackStatus} from './Channel';
+export { AGIServer } from './AGIServer';
+export { Channel, ChannelState, DialStatus, PlaybackStatus } from './Channel';

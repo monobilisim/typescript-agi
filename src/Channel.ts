@@ -599,13 +599,19 @@ export class Channel extends EventEmitter {
   ): Promise<{ digits: string; timeout: boolean }> {
     // If maxDigits is specified and interDigitTimeout is provided, use digit-by-digit collection
     if (maxDigits && maxDigits > 1 && interDigitTimeout) {
-      return this.getDataWithInterDigitTimeout(soundFile, timeout, maxDigits, interDigitTimeout);
+      return this.getDataWithInterDigitTimeout(
+        soundFile,
+        timeout,
+        maxDigits,
+        interDigitTimeout
+      );
     }
 
     // Use standard GET DATA for simple cases
-    const command = maxDigits !== undefined
-      ? format('GET DATA %s %s %s', soundFile, timeout, maxDigits)
-      : format('GET DATA %s %s', soundFile, timeout);
+    const command =
+      maxDigits !== undefined
+        ? format('GET DATA %s %s %s', soundFile, timeout, maxDigits)
+        : format('GET DATA %s %s', soundFile, timeout);
 
     const response = await this.sendCommand(command);
 
@@ -667,7 +673,10 @@ export class Channel extends EventEmitter {
       const remainingTotalTimeout = totalTimeout - elapsedTime;
 
       if (remainingTotalTimeout <= 0) {
-        return { digits: collectedDigits, timeout: collectedDigits.length === 0 };
+        return {
+          digits: collectedDigits,
+          timeout: collectedDigits.length === 0,
+        };
       }
 
       // Use the smaller of inter-digit timeout or remaining total timeout
@@ -679,7 +688,10 @@ export class Channel extends EventEmitter {
 
         if (!digit) {
           // Timeout waiting for digit
-          return { digits: collectedDigits, timeout: collectedDigits.length === 0 };
+          return {
+            digits: collectedDigits,
+            timeout: collectedDigits.length === 0,
+          };
         }
 
         collectedDigits += digit;
@@ -1306,7 +1318,7 @@ export class Channel extends EventEmitter {
     this.m_connection.destroy();
   }
 
-  private read(data: Buffer): void {
+  private read(data: Buffer | string): void {
     if (data.length === 0) {
       return;
     }

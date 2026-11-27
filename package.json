@@ -1,40 +1,47 @@
 {
-  "name": "typescript-agi-ipcom",
+  "name": "@monobilisim/typescript-agi",
   "version": "0.0.8",
+  "private": true,
   "type": "module",
-  "description": "NodeJS TypeScript Library for Asterisk AGI Interfaces",
-  "types": "dist/types/index.d.ts",
+  "description": "TypeScript library for Asterisk AGI interfaces",
+  "types": "./dist/types/index.d.ts",
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build.js",
-    "start": "node dist/esm/index.js",
-    "docs": "./node_modules/.bin/typedoc && touch docs/.nojekyll"
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs"
+    }
   },
-  "author": "Fabio Theodoro <fabio@ipcom.com.br>",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun build.ts && tsc",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "bun fmt --write .",
+    "docs": "typedoc"
+  },
+  "author": "Mono Bilişim",
   "contributors": [
+    "Fabio Theodoro <fabio@ipcom.com.br> (IPCOM fork)",
     "Brandon Lehmann <brandonlehmann@gmail.com> (original author)"
   ],
   "license": "MIT",
+  "packageManager": "bun@1.4.5",
   "devDependencies": {
-    "@eslint/js": "^9.36.0",
-    "@types/node": "^24.6.0",
-    "esbuild": "^0.25.10",
-    "eslint": "^9.36.0",
-    "globals": "^16.4.0",
-    "jiti": "^2.6.0",
-    "prettier": "3.6.2",
-    "typedoc": "^0.28.13",
-    "typescript": "^5.9.2",
-    "typescript-eslint": "^8.45.0"
+    "@eslint/js": "^10.0.1",
+    "@types/bun": "^1.4.5",
+    "eslint": "^10.15.0",
+    "globals": "^17.14.0",
+    "typedoc": "^0.28.20",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.74.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ipcomtelecom/typescript-agi-ipcom.git"
-  },
-  "homepage": "https://github.com/ipcomtelecom/typescript-agi-ipcom#readme",
-  "bugs": {
-    "url": "https://github.com/ipcomtelecom/typescript-agi-ipcom/issues"
+    "url": "git+https://github.com/monobilisim/typescript-agi.git"
   }
 }
