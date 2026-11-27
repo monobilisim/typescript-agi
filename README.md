@@ -209,9 +209,8 @@ bun run test
 # Generate the TypeDoc documentation into docs/
 bun run docs
 
-# Type check, lint, format
-bun run typecheck
-bun run lint
+# Type check, format
+bun run check
 bun fmt
 ```
 

@@ -20,8 +20,7 @@
   "scripts": {
     "build": "bun build.ts && tsc",
     "test": "bun test",
-    "typecheck": "tsc --noEmit && tsc -p tests",
-    "lint": "eslint .",
+    "check": "tsc --noEmit && tsc -p tests",
     "format": "bun fmt --write .",
     "docs": "typedoc"
   },
@@ -33,13 +32,9 @@
   "license": "MIT",
   "packageManager": "bun@1.4.5",
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
     "@types/bun": "^1.4.5",
-    "eslint": "^10.15.0",
-    "globals": "^17.14.0",
     "typedoc": "^0.28.20",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.74.0"
+    "typescript": "^6.0.3"
   },
   "repository": {
     "type": "git",
