@@ -236,7 +236,7 @@ Issues and feature requests are welcome on the
 **Current Maintainer:**
 
 - [Mono Bilişim](https://github.com/monobilisim)
-- GitHub: [@mudrockdev](https://github.com/mudrockdev)
+- GitHub: [@monobilisim](https://github.com/monobilisim)
 
 **Previous Maintainer:**
 
