@@ -26,7 +26,7 @@ This package is not published to npm. Each `v*` tag builds a GitHub release with
 the packed tarball attached; install it from there:
 
 ```sh
-bun add https://github.com/monobilisim/typescript-agi/releases/download/v1.0.0/monobilisim-typescript-agi-1.0.0.tgz
+bun add https://github.com/monobilisim/typescript-agi/releases/download/v1.1.0/monobilisim-typescript-agi-1.1.0.tgz
 ```
 
 ## Quick Start
