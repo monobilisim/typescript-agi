@@ -4,3 +4,12 @@
 
 export { AGIServer } from './AGIServer';
 export { Channel, ChannelState, DialStatus, PlaybackStatus } from './Channel';
+export {
+  AMIClient,
+  OriginateReason,
+  type AMIClientOptions,
+  type AMIFields,
+  type AMIMessage,
+  type OriginateOptions,
+  type OriginateResult,
+} from './AMIClient';

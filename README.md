@@ -17,6 +17,7 @@ with reliability and functionality enhancements for production environments.
 - **Comprehensive Event System**: New events for command lifecycle tracking
 - **Backpressure Control**: Configurable queue limits (default: 100 commands) prevent memory exhaustion
 - **Channel Lifecycle Management**: `channelAlive` flag ensures proper connection state tracking
+- **AMI Client**: Place calls (`Originate`), send any manager action and receive events over the Asterisk Manager Interface
 - **TypeScript Support**: Full type definitions with ESM and CommonJS outputs
 
 ## Installation
@@ -49,6 +50,53 @@ agiServer.on('channel', async (channel: Channel) => {
 
 agiServer.start();
 ```
+
+### Placing a Call (AMI + AGI)
+
+AGI only runs on a call that is already up. To start one from code, log in to
+the Asterisk Manager Interface (AMI) with `AMIClient` and `originate` the call
+into `AGI`; Asterisk connects back to the `AGIServer` once it is answered.
+
+```typescript
+import { AGIServer, AMIClient, Channel } from '@monobilisim/typescript-agi';
+
+const agiServer = new AGIServer(4573, '0.0.0.0');
+agiServer.on('channel', async (channel: Channel) => {
+  await channel.answer();
+  await channel.sayNumber(1453);
+  await channel.hangup();
+});
+await agiServer.start();
+
+const ami = new AMIClient({
+  host: '10.0.0.5', // Asterisk / FreePBX
+  username: 'app',
+  secret: process.env.AMI_SECRET!,
+});
+await ami.connect();
+
+const result = await ami.originate({
+  // FreePBX: Local/<number>@from-internal dials through the outbound routes
+  channel: 'Local/905551112233@from-internal',
+  application: 'AGI',
+  data: `agi://${ami.localAddress}:4573`, // this machine, as Asterisk sees it
+  timeout: 30000, // ring for 30 seconds
+});
+if (!result.answered) {
+  console.log(`Not answered, reason ${result.reason}`); // see OriginateReason
+}
+await ami.close();
+```
+
+The manager user needs write permission `originate` and read permission
+`call`. Asterisk additionally requires write permission `system` to originate
+into an application such as `AGI`; to avoid granting it, originate into a
+dialplan location (`context`, `exten`, `priority`) that runs `AGI()` instead.
+Allow the manager port (5038) only from the machines that run the client.
+
+`ami.action(name, fields)` sends any other manager action and resolves with
+its response; `ami.on('event', …)` receives the events the manager user may
+read.
 
 ## Advanced Features
 
@@ -137,6 +185,12 @@ You can override any timeout by passing a custom value to methods that support i
 - `error`: Server error occurred
 - `close`: Server stopped
 
+### AMIClient Events
+
+- `event`: An AMI event (every message with an `Event` header)
+- `close`: Connection closed, by either side
+- `error`: Connection error (only emitted while a listener is attached)
+
 ### Channel Events
 
 Standard events:
@@ -169,6 +223,8 @@ bun run docs
 ### Core Classes
 
 - **AGIServer**: TCP server that listens for AGI connections from Asterisk
+- **AMIClient**: Asterisk Manager Interface connection: login, actions, events and `originate()`
+- **OriginateReason**: Enum for how an originated call ended (ANSWERED, BUSY, NO_ANSWER, etc.)
 - **Channel**: Represents an active AGI channel with full protocol support
 - **ChannelState**: Enum for channel states (DOWN_AVAILABLE, OFF_HOOK, UP, etc.)
 - **DialStatus**: Enum for Dial() results (ANSWER, BUSY, NOANSWER, etc.)
