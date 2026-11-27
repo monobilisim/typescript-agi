@@ -158,9 +158,15 @@ the packed tarball attached; install it from there:</p>
 </li>
 </ol>
 <h2 id="build-from-source" class="tsd-anchor-link">Build from Source<a href="#build-from-source" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
-<pre><code class="sh"><span class="hl-9"># Install dependencies</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">install</span><br/><br/><span class="hl-9"># Build ESM, CommonJS and type definitions into dist/</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">build</span><br/><br/><span class="hl-9"># Generate the TypeDoc documentation into docs/</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">docs</span><br/><br/><span class="hl-9"># Type check, lint, format</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">typecheck</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">lint</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">fmt</span>
+<pre><code class="sh"><span class="hl-9"># Install dependencies</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">install</span><br/><br/><span class="hl-9"># Build ESM, CommonJS and type definitions into dist/</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">build</span><br/><br/><span class="hl-9"># Run the tests</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">test</span><br/><br/><span class="hl-9"># Generate the TypeDoc documentation into docs/</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">docs</span><br/><br/><span class="hl-9"># Type check, lint, format</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">typecheck</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">lint</span><br/><span class="hl-0">bun</span><span class="hl-1"> </span><span class="hl-2">fmt</span>
 </code><button type="button">Copy</button></pre>
 
+<h2 id="tests" class="tsd-anchor-link">Tests<a href="#tests" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p><code>tests/</code> uses <code>bun test</code> and drives the library only through its public entry
+point (<code>@monobilisim/typescript-agi</code>), the way an application would. A fake
+Asterisk in <code>tests/support/asterisk.ts</code> connects to a real <code>AGIServer</code> over
+loopback TCP, sends the <code>agi_*</code> environment and answers each command like
+Asterisk does.</p>
 <h2 id="releasing" class="tsd-anchor-link">Releasing<a href="#releasing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
 <ol>
 <li>
@@ -183,7 +189,7 @@ release.</p>
 <p><strong>Current Maintainer:</strong></p>
 <ul>
 <li><a href="https://github.com/monobilisim">Mono Bilişim</a></li>
-<li>GitHub: <a href="https://github.com/mudrockdev">@mudrockdev</a></li>
+<li>GitHub: <a href="https://github.com/monobilisim">@monobilisim</a></li>
 </ul>
 <p><strong>Previous Maintainer:</strong></p>
 <ul>
@@ -243,6 +249,7 @@ Copyright 2026 Mono Bilişim</p>
 <li><a href="#core-classes"><span>Core <wbr/>Classes</span></a></li></ul></li>
 <li><a href="#improvements-over-original"><span>Improvements <wbr/>Over <wbr/>Original</span></a></li>
 <li><a href="#build-from-source"><span>Build from <wbr/>Source</span></a></li>
+<li><a href="#tests"><span>Tests</span></a></li>
 <li><a href="#releasing"><span>Releasing</span></a></li>
 <li><a href="#contributing"><span>Contributing</span></a></li>
 <li><a href="#authors"><span>Authors</span></a></li>

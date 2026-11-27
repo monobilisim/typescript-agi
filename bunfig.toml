@@ -9,3 +9,8 @@ minimumReleaseAgeExcludes = ["@types/bun", "bun-types"]
 singleQuote = true
 trailingComma = "es5"
 semi = true
+
+[test]
+# Tests live in tests/ and drive the library through its public entry point
+# against a fake Asterisk on loopback TCP.
+root = "./tests"

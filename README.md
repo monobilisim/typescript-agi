@@ -203,6 +203,9 @@ bun install
 # Build ESM, CommonJS and type definitions into dist/
 bun run build
 
+# Run the tests
+bun run test
+
 # Generate the TypeDoc documentation into docs/
 bun run docs
 
@@ -211,6 +214,14 @@ bun run typecheck
 bun run lint
 bun fmt
 ```
+
+## Tests
+
+`tests/` uses `bun test` and drives the library only through its public entry
+point (`@monobilisim/typescript-agi`), the way an application would. A fake
+Asterisk in `tests/support/asterisk.ts` connects to a real `AGIServer` over
+loopback TCP, sends the `agi_*` environment and answers each command like
+Asterisk does.
 
 ## Releasing
 

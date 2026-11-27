@@ -19,7 +19,8 @@
   ],
   "scripts": {
     "build": "bun build.ts && tsc",
-    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit && tsc -p tests",
     "lint": "eslint .",
     "format": "bun fmt --write .",
     "docs": "typedoc"

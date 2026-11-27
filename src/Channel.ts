@@ -100,6 +100,7 @@ export class Channel extends EventEmitter {
   private commandQueue: IQueuedCommand[] = [];
   private isProcessingCommand = false;
   private channelAlive = true;
+  private abortInFlight: ((error: Error) => void) | null = null;
   private readonly maxQueueSize = 100;
   private readonly defaultCommandTimeout = 10000;
   private readonly maxCallDuration = 21600000; // 6 horas (360 minutos)
@@ -519,7 +520,8 @@ export class Channel extends EventEmitter {
       throw new Error('Could not delete tree from database');
     }
 
-    return response.result === 0;
+    // Asterisk answers result=1 when the tree was deleted, 0 otherwise.
+    return response.result === 1;
   }
 
   /**
@@ -621,7 +623,8 @@ export class Channel extends EventEmitter {
 
     return {
       digits: response.arguments.string('result'),
-      timeout: response.arguments.string('value') === '(timeout)',
+      // Asterisk appends "(timeout)" to the reply when the caller stopped typing.
+      timeout: response.arguments.boolean('timeout'),
     };
   }
 
@@ -1346,9 +1349,14 @@ export class Channel extends EventEmitter {
     const lines = message.split('\n');
 
     lines.map((line) => {
-      const split = line.split(':');
-      const name: string = (split[0] || '').trim();
-      const value: string = (split[1] || '').trim();
+      // Split at the first ':' only; values such as agi://host:port/script
+      // contain colons of their own.
+      const separator = line.indexOf(':');
+      const name: string = (
+        separator === -1 ? line : line.substring(0, separator)
+      ).trim();
+      const value: string =
+        separator === -1 ? '' : line.substring(separator + 1).trim();
 
       const id = name.substring(4);
 
@@ -1429,15 +1437,15 @@ export class Channel extends EventEmitter {
 
     const args: ResponseArguments = new ResponseArguments();
 
-    for (const value of parsed) {
-      if (value.indexOf('=') !== -1) {
+    for (const value of Channel.joinParenthesized(parsed)) {
+      if (value.startsWith('(')) {
+        const name = value.substring(1, value.length - 1);
+        args.addArgument(name, true);
+      } else if (value.indexOf('=') !== -1) {
         const parts = value.split('=', 2);
         const key = parts[0].trim();
         const val = parts[1].trim();
         args.addArgument(key, val);
-      } else if (value.indexOf('(') !== -1) {
-        const name = value.substring(1, value.length - 1);
-        args.addArgument(name, true);
       } else {
         args.addArgument('value', value);
       }
@@ -1450,6 +1458,36 @@ export class Channel extends EventEmitter {
     };
 
     this.emit('response', response);
+  }
+
+  /**
+   * Puts the words of a parenthesised value back together, e.g. the reply
+   * `200 result=1 (Ali Veli)` splits into `(Ali` and `Veli)`. Nested
+   * parentheses such as `(CALLERID(num))` are kept whole.
+   */
+  private static joinParenthesized(words: string[]): string[] {
+    const tokens: string[] = [];
+    let depth = 0;
+
+    for (const word of words) {
+      if (depth > 0) {
+        tokens[tokens.length - 1] += ' ' + word;
+      } else {
+        tokens.push(word);
+      }
+
+      if (depth > 0 || word.startsWith('(')) {
+        for (const character of word) {
+          if (character === '(') {
+            depth++;
+          } else if (character === ')') {
+            depth = Math.max(0, depth - 1);
+          }
+        }
+      }
+    }
+
+    return tokens;
   }
 
   private async send(message: string): Promise<void> {
@@ -1629,6 +1667,14 @@ export class Channel extends EventEmitter {
           clearTimeout(timeoutId);
           timeoutId = null;
         }
+        this.abortInFlight = null;
+      };
+
+      // Lets a hangup or a closed socket fail this command at once instead
+      // of leaving it pending until its timeout (or forever with Infinity).
+      this.abortInFlight = (error: Error) => {
+        cleanup();
+        reject(error);
       };
 
       // Register listener
@@ -1656,6 +1702,9 @@ export class Channel extends EventEmitter {
    */
   private handleChannelClose(): void {
     this.channelAlive = false;
+    this.abortInFlight?.(
+      new Error('Channel closed before the command completed')
+    );
     const pendingCount = this.commandQueue.length;
 
     if (pendingCount > 0) {
@@ -1679,6 +1728,9 @@ export class Channel extends EventEmitter {
    */
   private handleHangup(): void {
     this.channelAlive = false;
+    this.abortInFlight?.(
+      new Error('Call hung up before the command completed')
+    );
     const pendingCount = this.commandQueue.length;
 
     if (pendingCount > 0) {
